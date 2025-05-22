@@ -1,0 +1,15 @@
+<h1>Validation des questions</h1>
+<form method="POST">
+    {% for question in questions %}
+        <div style="border:1px solid #ddd; margin:10px; padding:10px;">
+            <label>
+                <input type="checkbox" name="valide_{{ question.id }}" {% if question.valide %}checked{% endif %}>
+                <strong>[{{ question.categorie }}]</strong> {{ question.texte }}
+            </label>
+            <br>
+            <em>{{ question.article.title }}</em><br>
+            <a href="{{ question.article.url }}" target="_blank">Voir l'article</a>
+        </div>
+    {% endfor %}
+    <button type="submit">💾 Enregistrer les modifications</button>
+</form>

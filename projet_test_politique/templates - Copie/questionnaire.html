@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire Politique</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">🏛️ <span>Politicool</span></div>
+    <div class="navbar-links">
+        <a href="{{ url_for('home') }}" class="btn-home">Retour à l'accueil</a>
+    </div>
+</header>
+    <div class="container">
+        <h2>Questionnaire Politique</h2>
+        <form method="POST">
+            {% set categories = {} %}
+
+            <!-- Organiser les questions par catégorie -->
+            {% for q in questions %}
+                {% if q.categorie not in categories %}
+                    {% set categories = categories | merge({q.categorie: []}) %}
+                {% endif %}
+                {% set categories = categories | merge({q.categorie: categories[q.categorie] + [q]}) %}
+            {% endfor %}
+
+            <!-- Afficher les questions par catégorie -->
+            {% for categorie, questions_in_categorie in categories.items() %}
+                <h3>{{ categorie | capitalize }}</h3>
+                {% for q in questions_in_categorie %}
+                    <div class="input-group">
+                        <label>{{ q.texte }}</label>
+                        <input type="text" name="reponse_{{ loop.index0 }}" required>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <button type="submit" class="btn">Envoyer</button>
+        </form>
+    </div>
+</body>
+</html>

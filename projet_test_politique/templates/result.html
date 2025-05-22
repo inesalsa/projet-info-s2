@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat de l'Analyse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">🏛️ <span>Politicool</span></div>
+    <div class="navbar-links">
+        <a href="{{ url_for('home') }}" class="btn-home">Retour à l'accueil</a>
+    </div>
+</header>
+    <div class="container">
+        <h2>Résultat de ton analyse politique</h2>
+
+        <!-- Affichage des résultats par catégorie -->
+        <div class="result-categories">
+            {% for category, responses in result.items() %}
+                <h3>{{ category }}</h3>
+                {% for rep in responses %}
+                    <p>{{ rep.texte }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        <a href="{{ url_for('home') }}" class="btn">Retour à la page d'accueil</a>
+    </div>
+</body>
+</html>

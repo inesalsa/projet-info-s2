@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz - Politicool</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    .category {
+      margin-bottom: 20px;
+    }
+    .questions-list {
+      display: none;
+      padding-left: 20px;
+    }
+    .category h3 {
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function toggleQuestions(categoryId) {
+      const element = document.getElementById(categoryId);
+      element.style.display = element.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">🏛️ <span>Politicool</span></div>
+    </div>
+</header>
+  <nav class="navbar">
+    <div class="logo">🏛️ Politicool</div>
+  </nav>
+
+  <div class="container">
+    <h1>Quiz Politicool</h1>
+    <form method="POST">
+      {% for category, questions in categories.items() %}
+      <div class="category">
+        <h3 onclick="toggleQuestions('category_{{ loop.index }}')">{{ category }}</h3>
+        <ul id="category_{{ loop.index }}" class="questions-list">
+          {% for question in questions %}
+          <li>
+            <label>{{ question.text }}</label>
+            <div>
+              <input type="radio" name="question_{{ question.id }}" value="A"> A
+              <input type="radio" name="question_{{ question.id }}" value="B"> B
+              <input type="radio" name="question_{{ question.id }}" value="C"> C
+              <input type="radio" name="question_{{ question.id }}" value="D"> D
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+      <button type="submit" class="btn">Soumettre</button>
+    </form>
+  </div>
+</body>
+</html>

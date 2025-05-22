@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accueil - Politicool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="flash-container">
+    {% for category, message in messages %}
+    <div class="flash {{ category }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">🏛️ <span>Politicool</span></div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Bienvenue sur <span class="highlight">Politicool</span></h2>
+                <p>Exprimez vos opinions politiques et découvrez où vous vous situez.</p>
+
+                <div class="hero-buttons">
+                    <a href="{{ url_for('login') }}" class="btn">Se connecter</a>
+                    <a href="{{ url_for('register') }}" class="btn">S'inscrire</a>
+                </div>
+
+                <div class="news-summary">
+    <h3>Actualités du moment</h3>
+    {% if resume_actualites %}
+        <div class="news-grid">
+            {% for category, articles in resume_actualites.items() %}
+                <div class="news-category">
+                    <h4>{{ category | capitalize }}</h4>
+                    <div class="news-category-content">
+                        {% for article in articles %}
+                            {% if article.title != "Erreur" and article.title != "Aucune actualité" %}
+                                <h5><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></h5>
+                                <p>{{ article.summary }}</p>
+                            {% else %}
+                                <p>{{ article.summary }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('login') }}" class="news-cta-link">Qu'est-ce que tu en penses ? Fais notre quiz pour le découvrir !</a>
+    {% else %}
+        <p>Aucune actualité disponible pour le moment.</p>
+    {% endif %}
+</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        &copy; 2025 Politicool. Tous droits réservés.
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Politicool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #2c3e50;
+            --primary-blue: #3498db;
+            --soft-blue: #74b9ff;
+            --warm-white: #fdfefe;
+            --neutral-100: #f8f9fa;
+            --neutral-200: #e9ecef;
+            --neutral-300: #dee2e6;
+            --neutral-400: #ced4da;
+            --neutral-600: #6c757d;
+            --neutral-700: #495057;
+            --neutral-800: #343a40;
+            --neutral-900: #212529;
+            --accent-coral: #ff7675;
+            --accent-green: #00b894;
+            --accent-yellow: #fdcb6e;
+            --background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            min-height: 100vh;
+            color: var(--neutral-800);
+            line-height: 1.6;
+        }
+
+        /* Navigation élégante */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neutral-200);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--soft-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: var(--neutral-100);
+            border-radius: 25px;
+            font-weight: 500;
+            color: var(--neutral-700);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent-yellow));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn {
+            padding: 0.6rem 1.5rem;
+            background: var(--primary-navy);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: var(--neutral-700);
+            transform: translateY(-1px);
+        }
+
+        /* Layout principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* En-tête */
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.1rem;
+            color: var(--neutral-600);
+            font-weight: 400;
+        }
+
+        /* Grid principal */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Cards modernes */
+        .dashboard-card {
+            background: var(--warm-white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--soft-blue));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .dashboard-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Section Actualités */
+        .news-section {
+            grid-column: 1;
+            grid-row: 1 / 3;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--neutral-200);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--soft-blue));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--neutral-900);
+        }
+
+        .card-subtitle {
+            color: var(--neutral-600);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .news-container {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .news-item {
+            background: var(--neutral-100);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-blue);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-item:hover {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-900);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .news-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .news-title a:hover {
+            color: var(--primary-blue);
+        }
+
+        .news-description {
+            color: var(--neutral-600);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--neutral-500);
+        }
+
+        .news-source {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        /* Section Profil */
+        .profile-section {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .profile-stats {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--neutral-100), white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--neutral-200);
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--neutral-900);
+        }
+
+        .quiz-cta {
+            background: linear-gradient(135deg, var(--primary-blue), var(--soft-blue));
+            color: white;
+            padding: 1.2rem;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .quiz-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Section Analyse */
+        .analysis-section {
+            grid-column: 2;
+            grid-row: 2;
+            background: var(--neutral-900);
+            color: white;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neutral-700);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.5rem;
+            margin-right: 1rem;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff6b6b; }
+        .dot-yellow { background: #ffd93d; }
+        .dot-green { background: #6bcf7f; }
+
+        .terminal-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .terminal-content {
+            font-family: 'Courier New', monospace;
+            color: #a8b3b8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        /* États vides */
+        .empty-state {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--neutral-600);
+        }
+
+        .empty-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+
+        .empty-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-700);
+        }
+
+        .empty-description {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Messages flash */
+        .flash-container {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            z-index: 200;
+            max-width: 350px;
+        }
+
+        .flash {
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: flashSlideIn 0.5s ease-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .flash.success {
+            background: rgba(0, 184, 148, 0.9);
+            color: white;
+        }
+
+        .flash.danger, .flash.error {
+            background: rgba(255, 118, 117, 0.9);
+            color: white;
+        }
+
+        /* Scrollbar personnalisée */
+        .news-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .news-container::-webkit-scrollbar-track {
+            background: var(--neutral-200);
+            border-radius: 10px;
+        }
+
+        .news-container::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 10px;
+        }
+
+        /* Animations */
+        @keyframes flashSlideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .dashboard-card {
+            animation: cardFadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .dashboard-card:nth-child(1) { animation-delay: 0.1s; }
+        .dashboard-card:nth-child(2) { animation-delay: 0.2s; }
+        .dashboard-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section inférieure full-width */
+        .dashboard-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .insights-card {
+            background: linear-gradient(135deg, var(--primary-blue), var(--soft-blue));
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .insights-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .insights-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-bottom {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .navbar-content {
+                padding: 0 1rem;
+            }
+            
+            .dashboard-card {
+                padding: 1.5rem;
+            }
+            
+            .flash-container {
+                right: 1rem;
+                left: 1rem;
+            }
+        }
+        /* Style des catégories d'actualités */
+.news-category {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--neutral-200);
+    color: var(--primary-navy);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* Amélioration des news-item */
+.news-item {
+    background: var(--neutral-100);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--primary-blue);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-item:hover {
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.news-item:hover .news-title a {
+    color: var(--primary-blue);
+}
+
+/* Métadonnées des actualités */
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--neutral-200);
+    font-size: 0.85rem;
+}
+
+.news-source {
+    font-weight: 600;
+    color: var(--primary-blue);
+    background: rgba(52, 152, 219, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+}
+
+.read-more {
+    color: var(--neutral-700);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.read-more:hover {
+    color: var(--primary-blue);
+}
+
+/* Animation au chargement des actualités */
+.news-item {
+    animation: slideInRight 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.news-item:nth-child(1) { animation-delay: 0.1s; }
+.news-item:nth-child(2) { animation-delay: 0.15s; }
+.news-item:nth-child(3) { animation-delay: 0.2s; }
+.news-item:nth-child(4) { animation-delay: 0.25s; }
+.news-item:nth-child(5) { animation-delay: 0.3s; }
+.news-item:nth-child(6) { animation-delay: 0.35s; }
+.news-item:nth-child(7) { animation-delay: 0.4s; }
+.news-item:nth-child(8) { animation-delay: 0.45s; }
+.news-item:nth-child(9) { animation-delay: 0.5s; }
+.news-item:nth-child(10) { animation-delay: 0.55s; }
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Message d'absence de préférences */
+.empty-preferences {
+    background: linear-gradient(to right, var(--neutral-100), white);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px dashed var(--neutral-300);
+    margin: 1rem 0;
+}
+
+.empty-preferences h3 {
+    color: var(--neutral-700);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.empty-preferences .preferences-cta {
+    background: var(--primary-navy);
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.empty-preferences .preferences-cta:hover {
+    background: var(--primary-blue);
+    transform: translateY(-2px);
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <div class="logo-icon">🏛️</div>
+                <span>Politicool</span>
+            </div>
+            <div class="navbar-actions">
+                <div class="user-info">
+                    <div class="user-avatar">{{ user.username[0]|upper }}</div>
+                    <span>{{ user.username }}</span>
+                </div>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Se déconnecter</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages Flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Contenu Principal -->
+    <div class="main-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1 class="welcome-title">Bonjour {{ user.username }} !</h1>
+            <p class="welcome-subtitle">Découvrez votre espace politique personnalisé</p>
+        </header>
+
+        <!-- Grid Principal -->
+        <div class="dashboard-grid">
+            <!-- Section Actualités -->
+            <div class="dashboard-card news-section">
+    <div class="card-header">
+        <div class="card-icon">📰</div>
+        <div>
+            <h2 class="card-title">Actualités Politiques</h2>
+            <p class="card-subtitle">Les dernières nouvelles qui correspondent à vos centres d'intérêt</p>
+        </div>
+    </div>
+    
+    {% if resume_actualites %}
+        <div class="news-container">
+            {% for categorie, articles in resume_actualites.items() %}
+                {% if articles|length > 0 %}
+                    <h3 class="news-category">{{ categorie }}</h3>
+                    {% for article in articles %}
+                        <article class="news-item">
+                            <h4 class="news-title">
+                                <a href="{{ article.url }}" target="_blank" rel="noopener">
+                                    {{ article.title }}
+                                </a>
+                            </h4>
+                            <p class="news-description">{{ article.summary }}</p>
+                            <div class="news-meta">
+                                <span class="news-source">{{ article.url|extract_source }}</span>
+                                <a href="{{ article.url }}" class="read-more" target="_blank" rel="noopener">Lire l'article complet →</a>
+                            </div>
+                        </article>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+    {% if not user.interets %}
+    <div class="empty-preferences">
+        <h3>Personnalisez votre fil d'actualités</h3>
+        <p>Sélectionnez vos catégories d'intérêt pour voir des actualités pertinentes</p>
+        <a href="#preferences-section" class="preferences-cta">Choisir mes catégories</a>
+    </div>
+{% endif %}
+        <div class="empty-state">
+            <div class="empty-icon">📪</div>
+            <div class="empty-title">Aucune actualité disponible</div>
+            <div class="empty-description">
+                Les dernières nouvelles apparaîtront ici dès qu'elles seront disponibles.
+            </div>
+        </div>
+    {% endif %}
+</div>
+        <!-- Section Préférences -->
+    <div class="dashboard-card preferences-section">
+        <div class="card-header">
+            <div class="card-icon">🎯</div>
+            <div>
+                <h2 class="card-title">Catégories préférées</h2>
+                <p class="card-subtitle">Personnalisez vos actualités</p>
+            </div>
+        </div>
+    
+        <form action="{{ url_for('save_preferences') }}" method="post">
+            <div class="preferences-form">
+                {% for cat in categories %}
+                    <div class="checkbox-item">
+                        <label>
+                            <input type="checkbox" name="categories" value="{{ cat }}"
+                                {% if cat in user.interets.split(',') %}checked{% endif %}>
+                            {{ cat }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="quiz-cta">💾 Sauvegarder mes préférences</button>
+        </form>
+    </div>
+
+            </div>
+
+            <!-- Section Profil Politique -->
+<div class="dashboard-card profile-section">
+    <div class="card-header">
+        <div class="card-icon">👤</div>
+        <div>
+            <h2 class="card-title">Votre Profil</h2>
+            <p class="card-subtitle">Identité politique</p>
+        </div>
+    </div>
+    
+    <div class="profile-stats">
+        <div class="stat-card">
+            <div class="stat-label">Affiliation</div>
+            <div class="stat-value">
+                {% if analyse_parti %}
+                    {{ analyse_parti }}
+                {% else %}
+                    <span style="color: var(--neutral-500);">Non déterminée</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Orientation</div>
+            <div class="stat-value">
+                {% if analyse_orientation %}
+                    {{ analyse_orientation }}
+                {% else %}
+                    <span style="color: var(--neutral-500);">Non déterminée</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Valeurs Clés</div>
+            <div class="stat-value">
+                {% if analyse_valeurs %}
+                    {{ analyse_valeurs }}
+                {% else %}
+                    <span style="color: var(--neutral-500);">Non déterminées</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- BOUTONS TOUJOURS AFFICHÉS -->
+    <div class="quiz-actions" style="margin-top: 20px;">
+        {% if quiz_en_cours %}
+            <!-- Quiz en cours -->
+            <a href="{{ url_for('reprendre_quiz') }}" class="quiz-cta" style="background-color: #f59e0b; margin-bottom: 10px;">
+                🔄 Reprendre le quiz en cours
+            </a>
+        {% endif %}
+        
+        {% if not analyse_parti %}
+            <!-- Pas encore d'analyse -->
+            <a href="{{ url_for('quiz') }}" class="quiz-cta">
+                🎯 Découvrir mon profil politique
+            </a>
+        {% else %}
+            <!-- Déjà une analyse - proposer refaire -->
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="{{ url_for('reinitialiser_quiz') }}" class="quiz-cta" style="background-color: #10b981;">
+                    🔄 Refaire le quiz (suivi d'évolution)
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+            <!-- Section Analyse -->
+<div class="dashboard-card analysis-section">
+    <div class="terminal-header">
+        <div class="terminal-dots">
+            <div class="terminal-dot dot-red"></div>
+            <div class="terminal-dot dot-yellow"></div>
+            <div class="terminal-dot dot-green"></div>
+        </div>
+        <h3 class="terminal-title">Analyse Détaillée</h3>
+    </div>
+    
+    {% if analyse_complete %}
+        <div class="terminal-content">
+            <pre style="white-space: pre-wrap; font-family: monospace;">{{ analyse_complete }}</pre>
+        </div>
+    {% else %}
+        <div class="terminal-content">
+> Système d'analyse politique [v2.0]
+> Statut: En attente de données
+Votre analyse complète sera générée 
+après avoir terminé le quiz.
+> Fonctionnalités:
+  - Positionnement sur l'échiquier
+  - Compatibilité partis politiques
+  - Analyse des priorités
+  - Recommandations personnalisées
+> Commencez maintenant →
+        </div>
+    {% endif %}
+</div>
+
+        <!-- Section inférieure -->
+        <div class="dashboard-bottom">
+        <!-- Section Chat Politique -->
+<div class="dashboard-card chat-section">
+    <div class="card-header">
+        <div class="card-icon">💬</div>
+        <div>
+            <h2 class="card-title">Débat Politique</h2>
+            <p class="card-subtitle">Discutez et débattez sur des sujets d'actualité</p>
+        </div>
+    </div>
+    
+    <div class="chat-container">
+        <div id="chat-messages" class="chat-messages">
+            <div class="message system-message">
+                <p>Bienvenue dans le débat politique! Je suis votre assistant Politicool. Posez-moi une question ou choisissez un sujet de discussion.</p>
+            </div>
+        </div>
+        
+        <div class="message-input-container">
+            <form id="chat-form" action="javascript:void(0);">
+                <input type="text" id="user-input" placeholder="Saisissez votre message..." autocomplete="off">
+                <button type="submit" class="send-button">
+                    <span>Envoyer</span>
+                </button>
+            </form>
+        </div>
+        
+        <div class="chat-topics">
+            <h4>Suggestions de sujets :</h4>
+            <div class="topic-buttons">
+                <button class="topic-button" data-topic="économie">Économie</button>
+                <button class="topic-button" data-topic="environnement">Environnement</button>
+                <button class="topic-button" data-topic="santé">Santé</button>
+                <button class="topic-button" data-topic="international">International</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles pour la section de chat -->
+<style>
+    .chat-section {
+        grid-column: 1 / 3;
+        grid-row: auto;
+    }
+
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    .chat-messages {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 1rem;
+        background: var(--neutral-100);
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        max-height: 300px;
+    }
+
+    .message {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 15px;
+        max-width: 80%;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    .user-message {
+        background: var(--primary-blue);
+        color: white;
+        align-self: flex-end;
+        margin-left: auto;
+        border-bottom-right-radius: 5px;
+    }
+
+    .assistant-message {
+        background: var(--neutral-200);
+        color: var(--neutral-800);
+        align-self: flex-start;
+        border-bottom-left-radius: 5px;
+    }
+
+    .system-message {
+        background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+        color: white;
+        width: 100%;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .message-input-container {
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+    #chat-form {
+        display: flex;
+        width: 100%;
+    }
+
+    #user-input {
+        flex-grow: 1;
+        padding: 1rem;
+        border: 1px solid var(--neutral-300);
+        border-radius: 25px;
+        font-size: 1rem;
+        color: var(--neutral-800);
+        outline: none;
+    }
+
+    #user-input:focus {
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+
+    .send-button {
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 0.5rem 1.5rem;
+        margin-left: 0.5rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .send-button:hover {
+        background: var(--primary-navy);
+        transform: translateY(-2px);
+    }
+
+    .chat-topics {
+        margin-top: 1rem;
+    }
+
+    .chat-topics h4 {
+        color: var(--neutral-700);
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .topic-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .topic-button {
+        background: var(--neutral-200);
+        color: var(--neutral-800);
+        border: none;
+        border-radius: 15px;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .topic-button:hover {
+        background: var(--primary-blue);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .chat-section {
+            grid-column: 1;
+        }
+        
+        .message {
+            max-width: 90%;
+        }
+    }
+</style>
+
+<!-- Script pour le chat - VERSION CORRIGÉE ET SIMPLIFIÉE -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatForm = document.getElementById('chat-form');
+    const userInput = document.getElementById('user-input');
+    const chatMessages = document.getElementById('chat-messages');
+    const topicButtons = document.querySelectorAll('.topic-button');
+    const sendButton = chatForm.querySelector('.send-button');
+    
+    console.log('🚀 Chat dashboard initialisé');
+    
+    // Fonction pour ajouter un message au chat - CORRIGÉE
+    function addMessage(content, type) {
+        const messageDiv = document.createElement('div');
+        
+        // Nettoyer le type pour éviter les espaces dans les classes CSS
+        const cleanType = type.replace(/\s+/g, '-');
+        messageDiv.classList.add('message', `${cleanType}-message`);
+        
+        const messageContent = document.createElement('p');
+        messageContent.innerHTML = content.replace(/\n/g, '<br>');
+        messageDiv.appendChild(messageContent);
+        
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        return messageDiv;
+    }
+
+    // Fonction pour afficher les erreurs
+    function showError(error) {
+        console.error('❌ Erreur chat:', error);
+        addMessage(`Erreur: ${error}`, 'error');
+    }
+    
+    // Fonction pour désactiver/activer l'interface
+    function setLoading(isLoading) {
+        sendButton.disabled = isLoading;
+        userInput.disabled = isLoading;
+        
+        if (isLoading) {
+            sendButton.innerHTML = '<span>Envoi...</span>';
+        } else {
+            sendButton.innerHTML = '<span>Envoyer</span>';
+        }
+    }
+    
+    // Test de connectivité au chargement - VERSION SIMPLIFIÉE
+    function testConnection() {
+        console.log('🔍 Test de connectivité...');
+        
+        fetch('/api/dashboard/chat/test')
+        .then(response => response.json())
+        .then(data => {
+            console.log('✅ Test réussi:', data);
+            addMessage('🟢 Connexion au serveur établie', 'system');
+        })
+        .catch(error => {
+            console.error('❌ Test échoué:', error);
+            addMessage('🔴 Problème de connexion au serveur', 'error');
+        });
+    }
+    
+    // Gérer l'envoi de message - VERSION SIMPLIFIÉE
+    chatForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const userMessage = userInput.value.trim();
+        
+        if (!userMessage) {
+            console.log('⚠️ Message vide ignoré');
+            return;
+        }
+        
+        console.log('📤 Envoi message:', userMessage);
+        
+        // Afficher le message de l'utilisateur
+        addMessage(userMessage, 'user');
+        
+        // Effacer l'input et désactiver l'interface
+        userInput.value = '';
+        setLoading(true);
+        
+        // Ajouter un indicateur de chargement - CORRIGÉ
+        const loadingMsg = addMessage('🤔 Politicool réfléchit...', 'assistant-typing');
+        
+        // Préparer les données - SIMPLIFIÉ
+        const requestData = {
+            message: userMessage
+        };
+        
+        console.log('📡 Données envoyées:', requestData);
+        
+        // Envoyer la requête - VERSION SIMPLIFIÉE
+        fetch('/api/dashboard/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            console.log('📨 Réponse reçue - Status:', response.status);
+            console.log('📨 Headers:', Array.from(response.headers.entries()));
+            
+            // NOUVELLE APPROCHE: Toujours parser en JSON, même si erreur
+            return response.json().then(data => {
+                console.log('📦 JSON reçu:', data);
+                return { data, status: response.status, ok: response.ok };
+            }).catch(jsonError => {
+                console.error('❌ Erreur parsing JSON:', jsonError);
+                // Si le JSON ne peut pas être parsé, récupérer le texte brut
+                return response.text().then(text => {
+                    console.error('📄 Réponse brute:', text.substring(0, 500));
+                    throw new Error(`Réponse non-JSON reçue: ${text.substring(0, 100)}...`);
+                });
+            });
+        })
+        .then(result => {
+            const { data, status, ok } = result;
+            
+            console.log('✅ Traitement réponse:', { data, status, ok });
+            
+            // Supprimer l'indicateur de chargement
+            if (loadingMsg && loadingMsg.parentNode) {
+                loadingMsg.remove();
+            }
+            
+            // Vérifier s'il y a une erreur dans la réponse
+            if (data.error) {
+                showError(data.error);
+                return;
+            }
+            
+            // Vérifier s'il y a une réponse
+            if (data.response) {
+                addMessage(data.response, 'assistant');
+            } else if (data.success) {
+                addMessage("✅ Succès mais pas de réponse. Données complètes: " + JSON.stringify(data), 'assistant');
+            } else {
+                addMessage("❓ Réponse inattendue: " + JSON.stringify(data), 'assistant');
+            }
+        })
+        .catch(error => {
+            console.error('💥 Erreur complète:', error);
+            
+            // Supprimer l'indicateur de chargement
+            if (loadingMsg && loadingMsg.parentNode) {
+                loadingMsg.remove();
+            }
+            
+            showError(error.message);
+        })
+        .finally(() => {
+            console.log('🔚 Requête terminée - réactivation interface');
+            setLoading(false);
+        });
+    });
+    
+    // Gérer les clics sur les boutons de sujets
+    topicButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const topic = this.getAttribute('data-topic');
+            
+            let question = '';
+            switch(topic) {
+                case 'économie':
+                    question = "Quelle est votre position sur l'augmentation du salaire minimum ?";
+                    break;
+                case 'environnement':
+                    question = "Pensez-vous que les taxes carbone sont efficaces pour lutter contre le changement climatique ?";
+                    break;
+                case 'santé':
+                    question = "Quel modèle de système de santé vous semble le plus équitable ?";
+                    break;
+                case 'international':
+                    question = "Comment la France devrait-elle positionner sa politique étrangère face aux enjeux géopolitiques actuels ?";
+                    break;
+                default:
+                    question = "Parlons de politique " + topic;
+            }
+            
+            userInput.value = question;
+            userInput.focus();
+        });
+    });
+    
+    // Bouton pour reset le chat
+    const resetButton = document.createElement('button');
+    resetButton.textContent = '🔄 Reset Chat';
+    resetButton.className = 'topic-button';
+    resetButton.style.backgroundColor = '#e74c3c';
+    resetButton.style.color = 'white';
+    resetButton.addEventListener('click', function() {
+        console.log('🔄 Reset du chat...');
+        
+        fetch('/api/dashboard/chat/reset', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('✅ Chat resetté:', data);
+            chatMessages.innerHTML = `
+                <div class="message system-message">
+                    <p>✨ Chat réinitialisé! Posez-moi une nouvelle question politique.</p>
+                </div>
+            `;
+        })
+        .catch(error => {
+            console.error('❌ Erreur reset:', error);
+            showError('Erreur lors du reset: ' + error.message);
+        });
+    });
+    
+    // Ajouter le bouton reset
+    const topicButtonsContainer = document.querySelector('.topic-buttons');
+    if (topicButtonsContainer) {
+        topicButtonsContainer.appendChild(resetButton);
+    }
+    
+
+    
+    // Lancer le test de connectivité
+    setTimeout(testConnection, 1000);
+    
+    console.log('🎯 Chat dashboard entièrement chargé');
+});
+</script>
+            <div class="insights-card">
+                <h3>💡 Le saviez-vous ?</h3>
+                <p>Votre profil politique évolue avec vos réponses. Plus vous participez, plus notre analyse devient précise et personnalisée.</p>
+            </div>
+            <div class="insights-card">
+                <h3>🌟 Prochaine étape</h3>
+                <p>Explorez les actualités qui correspondent à votre profil et découvrez de nouvelles perspectives sur les enjeux qui vous tiennent à cœur.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation des messages flash
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashes = document.querySelectorAll('.flash');
+            flashes.forEach(flash => {
+                setTimeout(() => {
+                    flash.style.transition = 'all 0.5s ease-out';
+                    flash.style.transform = 'translateX(100%)';
+                    flash.style.opacity = '0';
+                    setTimeout(() => flash.remove(), 500);
+                }, 4000);
+            });
+
+            // Animation des cartes au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'cardFadeIn 0.6s ease-out forwards';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.dashboard-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

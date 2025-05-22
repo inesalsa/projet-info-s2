@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualités</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🏛️ Politicool</div>
+    </nav>
+    
+    <div class="container">
+        <h1>Les dernières actualités politiques</h1>
+        
+        {% if articles %}
+            <ul>
+                {% for article in articles %}
+                    <li>
+                        <h3><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></h3>
+                        <p>{{ article.content }}</p>
+                        <p><strong>Publié le : </strong>{{ article.published_at }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucune actualité disponible pour le moment.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+

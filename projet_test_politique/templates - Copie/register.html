@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inscription - Politicool</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">🏛️ <span>Politicool</span></div>
+    <div class="navbar-links">
+        <a href="{{ url_for('home') }}" class="btn-home">Retour à l'accueil</a>
+    </div>
+</header>
+
+  <div class="container">
+    <h1>Créer un compte</h1>
+    <form method="POST" action="{{ url_for('register') }}" class="form" onsubmit="return validateForm()">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flashes">
+            {% for category, message in messages %}
+              <li class="flash {{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <div class="input-group">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <div class="input-group">
+        <label for="password_confirm">Confirmer le mot de passe</label>
+        <input type="password" id="password_confirm" name="password_confirm" required />
+      </div>
+
+      <div class="input-group">
+        <label for="interets">Choisissez vos centres d’intérêt</label>
+        <div id="interets-container">
+          {% set interets_possibles = [
+            "Économie", "Environnement", "Éducation", "Santé",
+            "Affaires internationales", "Justice", "Culture", "Technologie"
+          ] %}
+          {% for interet in interets_possibles %}
+            <button type="button" class="interest-btn" data-value="{{ interet }}">{{ interet }}</button>
+          {% endfor %}
+        </div>
+        <div id="selected-interets"></div>
+      </div>
+
+      <button type="submit" class="btn">S'inscrire</button>
+    </form>
+
+    <p class="link">Déjà un compte ? <a href="{{ url_for('login') }}">Connectez-vous</a></p>
+  </div>
+
+<script>
+  const buttons = document.querySelectorAll('.interest-btn');
+  const container = document.getElementById('selected-interets');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const value = btn.dataset.value;
+      const isActive = btn.classList.toggle('selected');
+
+      if (isActive) {
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'interets';
+        hiddenInput.value = value;
+        hiddenInput.dataset.ref = value;
+        container.appendChild(hiddenInput);
+      } else {
+        const toRemove = container.querySelector(`input[data-ref="${value}"]`);
+        if (toRemove) toRemove.remove();
+      }
+    });
+  });
+
+  function validateForm() {
+    const password = document.getElementById("password").value;
+    const passwordConfirm = document.getElementById("password_confirm").value;
+
+    // Vérifie si les mots de passe sont identiques
+    if (password !== passwordConfirm) {
+      alert("Les mots de passe ne correspondent pas !");
+      return false;
+    }
+
+    // Si les mots de passe sont valides, continue l'envoi
+    return true;
+  }
+</script>
+
+</body>
+</html>

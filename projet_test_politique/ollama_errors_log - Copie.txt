@@ -1,0 +1,279 @@
+
+
+--- ERREUR ---
+Titre: Attaques de prisons : des actions de natures très diverses qui sèment le doute sur les motivations de leurs auteurs
+URL: https://www.lemonde.fr/societe/article/2025/04/16/attaques-de-prisons-des-actions-de-natures-tres-diverses-qui-sement-le-doute-sur-les-motivations-de-leurs-auteurs_6596643_3224.html
+Réponse brute:
+{
+  "categorie": "Justice",
+  "question": "Êtes-vous favorable à l'investigation approfondie des circonstances de cette attaque contre la prison de Tarascon ?"
+
+
+--- ERREUR ---
+Titre: En direct, guerre en Ukraine : le secrétaire d’Etat américain, Marco Rubio, à Paris mercredi et jeudi pour des discussions sur le conflit
+URL: https://www.lemonde.fr/international/live/2025/04/16/en-direct-guerre-en-ukraine-le-secretaire-d-etat-americain-marco-rubio-a-paris-mercredi-et-jeudi-pour-des-discussions-sur-le-conflit_6595711_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à des sanctions économiques contre la Corée du Nord pour récompenser son soutien aux forces russes en Ukraine ?"
+
+
+--- ERREUR ---
+Titre: Real Madrid-Arsenal : Kylian Mbappé attendu comme le sauveur face aux Gunners en Ligue des champions
+URL: https://www.lemonde.fr/sport/article/2025/04/16/real-madrid-arsenal-kylian-mbappe-attendu-comme-le-sauveur-face-aux-gunners-en-ligue-des-champions_6596641_3242.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à la présence de matchs internationaux comme le quart-de-finale de la Ligue des champions au même stade que les compétitions nationales, tels que la Premier League et la Division 1 en France ?"
+
+
+--- ERREUR ---
+Titre: Chikungunya : six décès liés à l’épidémie recensés à La Réunion depuis le début de 2025
+URL: https://www.lemonde.fr/planete/article/2025/04/16/chikungunya-six-deces-lies-a-l-epidemie-recenses-a-la-reunion-depuis-le-debut-de-2025_6596639_3244.html
+Réponse brute:
+{
+  "categorie": "Santé",
+  "question": "Êtes-vous favorable à l'augmentation des dépenses de santé publique pour lutter contre les épidémies de maladies telles que le chikungunya ?"
+
+
+--- ERREUR ---
+Titre: Congrès du PS : Philippe Brun, le jeune socialiste qui se rêvait éléphant
+URL: https://www.lemonde.fr/politique/article/2025/04/16/congres-du-ps-philippe-brun-le-jeune-socialiste-qui-se-revait-elephant_6596638_823448.html
+Réponse brute:
+{
+  "categorie": "Justice",
+  "question": "Êtes-vous favorable à la poursuite de Philippe Brun, député socialiste, face aux accusations formulées contre lui ?"
+
+
+--- ERREUR ---
+Titre: La Cour des comptes menace de ne plus certifier le budget de l’Etat si elle n’est pas davantage écoutée
+URL: https://www.lemonde.fr/politique/article/2025/04/16/la-cour-des-comptes-menace-de-ne-plus-certifier-le-budget-de-l-etat-si-elle-n-est-pas-davantage-ecoutee_6596636_823448.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à la mise en œuvre d'une politique de réduction des émissions de gaz à effet de serre entre les nations membres de l'Organisation des Nations Unies (ONU) ?"
+
+
+--- ERREUR ---
+Titre: Immigration : la Commission européenne dresse une liste de sept « pays sûrs », limitant les possibilités d’asile pour leurs ressortissants
+URL: https://www.lemonde.fr/international/article/2025/04/16/immigration-la-commission-europeenne-dresse-une-liste-de-sept-pays-surs-limitant-les-possibilites-d-asile-pour-leurs-ressortissants_6596635_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à l'adoption par la Commission européenne de cette nouvelle liste de pays 'sûrs' pour l'immigration ?"
+
+
+--- ERREUR ---
+Titre: « L’administration Trump met en danger la recherche scientifique »
+URL: https://www.lemonde.fr/idees/article/2025/04/16/l-administration-trump-met-en-danger-la-recherche-scientifique_6596634_3232.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à l'intervention directe de l'AFEA dans les affaires américaines ?"
+
+
+--- ERREUR ---
+Titre: « Festa Major » : l’antique esprit de carnaval, filmé au plus près
+URL: https://www.lemonde.fr/culture/article/2025/04/16/festa-major-l-antique-esprit-de-carnaval-filme-au-plus-pres_6596633_3246.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à la création d'une liste de monuments historiques pour le village Lavissière, comme celui représenté dans le documentaire « Festa Major » ?"
+
+
+--- ERREUR ---
+Titre: En Chine, nouveau tour de vis dans la restriction des films hollywoodiens
+URL: https://www.lemonde.fr/economie/article/2025/04/16/en-chine-nouveau-tour-de-vis-dans-la-restriction-des-films-hollywoodiens_6596645_3234.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à une sanctions économiques contre les États-Unis en réaction aux droits de douane américains sur les produits chinois ?"
+
+
+--- ERREUR ---
+Titre: Attaques de prisons : des actions de natures très diverses qui sèment le doute sur les motivations de leurs auteurs
+URL: https://www.lemonde.fr/societe/article/2025/04/16/attaques-de-prisons-des-actions-de-natures-tres-diverses-qui-sement-le-doute-sur-les-motivations-de-leurs-auteurs_6596643_3224.html
+Réponse brute:
+{
+  "categorie": "Justice",
+  "question": "Êtes-vous favorable à une révision des sanctions pour les agresseurs de prisonniers en situation de détention?"
+
+
+--- ERREUR ---
+Titre: Moustique-tigre dans « Le Monde », du statut de danger exotique à celui de péril de voisinage
+URL: https://www.lemonde.fr/m-le-mag/article/2025/04/16/moustique-tigre-dans-le-monde-du-statut-de-danger-exotique-a-celui-de-peril-de-voisinage_6596642_4500055.html
+Réponse brute:
+{
+  "categorie": "Économie",
+  "question": "Êtes-vous favorable à que les autorités françaises imposent des mesures plus drastiques pour contrôler la propagation des moustiques dans le sud de la France en raison du phénomène d'émergence de l'HIV en lien avec ce vecteur de transmission ?"
+
+
+--- ERREUR ---
+Titre: En direct, guerre en Ukraine : le secrétaire d’Etat américain, Marco Rubio, à Paris mercredi et jeudi pour des discussions sur le conflit
+URL: https://www.lemonde.fr/international/live/2025/04/16/en-direct-guerre-en-ukraine-le-secretaire-d-etat-americain-marco-rubio-a-paris-mercredi-et-jeudi-pour-des-discussions-sur-le-conflit_6595711_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à l'implication accrue de la Corée du Nord dans le conflit en Ukraine ?"
+
+
+--- ERREUR ---
+Titre: La danse férocement inventive d’Angelin Preljocaj, au Théâtre de la Ville, à Paris
+URL: https://www.lemonde.fr/culture/article/2025/04/16/la-danse-ferocement-inventive-d-angelin-preljocaj-au-theatre-de-la-ville-a-paris_6596648_3246.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à l'expérience du peintre danois dAngelin Preljocaj lors de sa représentation de son 'Helikopter' au Théâtre de la Ville, à Paris ?"
+
+
+--- ERREUR ---
+Titre: Giuliano da Empoli, un portraitiste de l’« internationale réac »
+URL: https://www.lemonde.fr/m-le-mag/article/2025/04/16/giuliano-da-empoli-un-portraitiste-de-l-internationale-reac_6596647_4500055.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à que Giuliano da Empoli devienne un personnalité publique régulière ?"
+
+
+--- ERREUR ---
+Titre: La Lettonie quitte la convention d’Ottawa interdisant les mines antipersonnel
+URL: https://www.lemonde.fr/international/article/2025/04/16/la-lettonie-quitte-la-convention-d-ottawa-interdisant-les-mines-antipersonnel_6596646_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à une augmentation des coopérations militaires entre la Lettonie et l'Union européenne dans le contexte de l'invasion de l'Ukraine par la Russie ?"
+
+
+--- ERREUR ---
+Titre: En Chine, nouveau tour de vis dans la restriction des films hollywoodiens
+URL: https://www.lemonde.fr/economie/article/2025/04/16/en-chine-nouveau-tour-de-vis-dans-la-restriction-des-films-hollywoodiens_6596645_3234.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à une révision des droits de douane américains sur les produits chinois ?"
+
+
+--- ERREUR ---
+Titre: La danse férocement inventive d’Angelin Preljocaj, au Théâtre de la Ville, à Paris
+URL: https://www.lemonde.fr/culture/article/2025/04/16/la-danse-ferocement-inventive-d-angelin-preljocaj-au-theatre-de-la-ville-a-paris_6596648_3246.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à une collaboration accrue entre les compagnies de danse et les chorégraphes pour promouvoir la danse contemporaine en France ?"
+
+
+--- ERREUR ---
+Titre: Giuliano da Empoli, un portraitiste de l’« internationale réac »
+URL: https://www.lemonde.fr/m-le-mag/article/2025/04/16/giuliano-da-empoli-un-portraitiste-de-l-internationale-reac_6596647_4500055.html
+Réponse brute:
+{
+  "categorie": "Éducation",
+  "question": "Êtes-vous favorable à une réforme de l'enseignement pour donner plus d'importance aux méthodes pédagogiques innovantes ?"
+
+
+--- ERREUR ---
+Titre: Quand les Chinois se moquent des Etats-Unis sur fond de guerre commerciale
+URL: https://www.lemonde.fr/international/video/2025/04/16/quand-les-chinois-se-moquent-des-etats-unis-sur-fond-de-guerre-commerciale_6596650_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à une plus grande régulation des contenus diffusés sur les réseaux sociaux par des influenceurs étrangers ?"
+
+
+--- ERREUR ---
+Titre: La danse férocement inventive d’Angelin Preljocaj, au Théâtre de la Ville, à Paris
+URL: https://www.lemonde.fr/culture/article/2025/04/16/la-danse-ferocement-inventive-d-angelin-preljocaj-au-theatre-de-la-ville-a-paris_6596648_3246.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à une collaboration entre les danseurs et les producteurs pour créer des spectacles de haute technologie ?"
+
+
+--- ERREUR ---
+Titre: Giuliano da Empoli, un portraitiste de l’« internationale réac »
+URL: https://www.lemonde.fr/m-le-mag/article/2025/04/16/giuliano-da-empoli-un-portraitiste-de-l-internationale-reac_6596647_4500055.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à la nomination d'un pédagogue efficace comme Giuliano da Empoli pour un poste de confiance ?"
+
+
+--- ERREUR ---
+Titre: Quand les Chinois se moquent des Etats-Unis sur fond de guerre commerciale
+URL: https://www.lemonde.fr/international/video/2025/04/16/quand-les-chinois-se-moquent-des-etats-unis-sur-fond-de-guerre-commerciale_6596650_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à une réglementation stricte des contenus de publicité diffusés par les influenceurs chinois sur les réseaux sociaux en Amérique?"
+
+
+--- ERREUR ---
+Titre: La danse férocement inventive d’Angelin Preljocaj, au Théâtre de la Ville, à Paris
+URL: https://www.lemonde.fr/culture/article/2025/04/16/la-danse-ferocement-inventive-d-angelin-preljocaj-au-theatre-de-la-ville-a-paris_6596648_3246.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à la préservation d'œuvres de danse innovantes comme celle de dAngelin Preljocaj présentée au Théâtre de la Ville, en considération des progrès technologiques et de leur impact sur l'industrie du spectacle ?"
+
+
+--- ERREUR ---
+Titre: Quand les Chinois se moquent des Etats-Unis sur fond de guerre commerciale
+URL: https://www.lemonde.fr/international/video/2025/04/16/quand-les-chinois-se-moquent-des-etats-unis-sur-fond-de-guerre-commerciale_6596650_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à l'imposition de restrictions plus strictes aux échanges commerciaux avec la Chine ?"
+
+
+--- ERREUR ---
+Titre: La danse férocement inventive d’Angelin Preljocaj, au Théâtre de la Ville, à Paris
+URL: https://www.lemonde.fr/culture/article/2025/04/16/la-danse-ferocement-inventive-d-angelin-preljocaj-au-theatre-de-la-ville-a-paris_6596648_3246.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à une collaboration accrue entre les artistes et les industries cinématographiques pour promouvoir la danse dans les films ?"
+
+
+--- ERREUR ---
+Titre: Quand les Chinois se moquent des Etats-Unis sur fond de guerre commerciale
+URL: https://www.lemonde.fr/international/video/2025/04/16/quand-les-chinois-se-moquent-des-etats-unis-sur-fond-de-guerre-commerciale_6596650_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à une action diplomatique pour lutter contre la propagation d'informations fausses et trompeuses provenant de pays étrangers sur les réseaux sociaux ?"
+
+
+--- ERREUR ---
+Titre: La danse férocement inventive d’Angelin Preljocaj, au Théâtre de la Ville, à Paris
+URL: https://www.lemonde.fr/culture/article/2025/04/16/la-danse-ferocement-inventive-d-angelin-preljocaj-au-theatre-de-la-ville-a-paris_6596648_3246.html
+Réponse brute:
+{
+  "categorie": "Culture",
+  "question": "Êtes-vous favorable à une nouvelle compagnie de danse à Paris pour interpréter des œuvres contemporaines ?"
+
+
+--- ERREUR ---
+Titre: Quand les Chinois se moquent des Etats-Unis sur fond de guerre commerciale
+URL: https://www.lemonde.fr/international/video/2025/04/16/quand-les-chinois-se-moquent-des-etats-unis-sur-fond-de-guerre-commerciale_6596650_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à la mise en place d'une réglementation plus stricte pour les réseaux sociaux afin de prévenir la manipulation des influences chinoises sur les Américains ?"
+
+
+--- ERREUR ---
+Titre: A la Martinique, la relance prometteuse de la production de cacao
+URL: https://www.lemonde.fr/economie/article/2025/04/16/a-la-martinique-la-relance-prometteuse-de-la-production-de-cacao_6596651_3234.html
+Réponse brute:
+{
+  "categorie": "Économie",
+  "question": "Êtes-vous favorable à la réintroduction de la culture des cacaoyers en Martinique pour promouvoir l'économie locale ?"
+
+
+--- ERREUR ---
+Titre: Quand les Chinois se moquent des Etats-Unis sur fond de guerre commerciale
+URL: https://www.lemonde.fr/international/video/2025/04/16/quand-les-chinois-se-moquent-des-etats-unis-sur-fond-de-guerre-commerciale_6596650_3210.html
+Réponse brute:
+{
+  "categorie": "Affaires internationales",
+  "question": "Êtes-vous favorable à une action politique pour contrôler l'influence des contenus chinois sur les réseaux sociaux en Amérique?"

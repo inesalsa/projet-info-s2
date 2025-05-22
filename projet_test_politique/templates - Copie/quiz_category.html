@@ -1,0 +1,32 @@
+<!-- quiz_category.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - {{ category }}</title>
+</head>
+<body>
+
+<h1>Quiz - {{ category }}</h1>
+
+<form method="POST">
+    {% for question in questions %}
+        <div>
+            <h4>{{ question.text }}</h4>
+            
+            <!-- Affichage de l'article associé à la question -->
+            <div>
+                <h5>Article : </h5>
+                <p>{{ question.article }}</p> <!-- Article spécifique à la question -->
+            </div>
+
+            <input type="text" name="question_{{ question.id }}" placeholder="Votre réponse...">
+        </div>
+    {% endfor %}
+    
+    <button type="submit">Suivant</button>
+</form>
+
+</body>
+</html>

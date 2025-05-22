@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz {{ categorie | capitalize }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🏛️ Politicool</div>
+  </nav>
+
+  <div class="container">
+    <h1>Quiz - Catégorie : {{ categorie | capitalize }}</h1>
+
+    <form method="POST">
+      {% if questions %}
+        {% for question, article, summary in zip(questions, articles, summaries) %}
+          <div class="question-card">
+            <h3>{{ question.texte }}</h3>
+
+            {% if article %}
+              <p><strong>Résumé de l'article :</strong> {{ summary }}</p>
+              <p><strong>Source :</strong> <a href="{{ article.url }}" target="_blank">Le Monde: Lire l'article complet</a></p>
+            {% endif %}
+
+            <!-- Champ réponse -->
+            <textarea name="question_{{ question.id }}" placeholder="Votre réponse ici..." rows="3"></textarea>
+
+            <!-- Option passer la question -->
+            <div class="actions">
+              <label>
+                <input type="checkbox" name="passer_{{ question.id }}">
+                Passer cette question
+              </label>
+            </div>
+
+            <hr>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>Aucune question disponible pour cette catégorie.</p>
+      {% endif %}
+
+      <!-- Boutons d'action -->
+      <div class="navigation">
+        <button type="submit" name="sauvegarder" class="btn btn-secondary">💾 Sauvegarder pour plus tard</button>
+        <button type="submit" class="btn btn-primary">✅ Soumettre les réponses</button>
+      </div>
+    </form>
+
+    {% if next_category %}
+      <div class="next-category">
+        <a href="{{ url_for('quiz_par_categorie', categorie=next_category) }}" class="btn btn-info">
+          ⏭️ Passer à la catégorie suivante : {{ next_category | capitalize }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
